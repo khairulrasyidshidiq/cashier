@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('itemName');
             $table->integer('quantity');
-            $table->integer('price');
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }

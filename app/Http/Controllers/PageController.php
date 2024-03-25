@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use App\Models\Item;
 class PageController extends Controller
 {
     public function login()
@@ -27,6 +27,11 @@ class PageController extends Controller
     {
         return view('AdminPage.createOperator');
     }
+
+    public function createItem()
+    {
+        return view('AdminPage.createBarang');
+    }
     
     public function operator()
     {
@@ -36,7 +41,7 @@ class PageController extends Controller
     public function stockBarang()
     {
         $stockBarang = Item::all();
-        return view('AdminPage.stockBarang');
+        return view('AdminPage.stockBarang', compact('stockBarang'));
     }
 
     public function pendataanBarang()

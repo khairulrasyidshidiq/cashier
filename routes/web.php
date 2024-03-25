@@ -24,8 +24,12 @@ Route::post('/loginPost', [LoginController::class, 'loginPost']);
 Route::get('/admin', [PageController::class, 'admin']);
 Route::get('/admin/create-account', [PageController::class, 'createAccount']);
 Route::get('/admin/account-operator', [PageController::class, 'accountOperator']);
+Route::delete('/admin/delete-operator/{id}', [AdminController::class, 'deleteOperator']);
 Route::get('/admin/stock-barang', [PageController::class, 'stockBarang']);
+Route::get('/admin/create-barang', [PageController::class, 'createItem']);
 Route::post('/admin/createOperatorPost', [AdminController::class, 'createOperatorPost']);
+Route::post('/admin/createItemPost', [AdminController::class, 'createItemPost']);
+
 
 Route::get('/operator', [PageController::class, 'operator']);
 Route::get('/operator/pendataan-barang', [PageController::class, 'pendataanBarang']);

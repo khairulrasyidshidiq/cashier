@@ -20,11 +20,10 @@
                     </div>
 
                     <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
-                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
-                        id="hidden">
+                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="hidden">
                         <div class="py-1" role="none">
-                            <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300"
-                                role="menuitem" tabindex="-1" id="menu-item-0">Logout</a>
+                            <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300" role="menuitem" tabindex="-1"
+                                id="menu-item-0">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -35,8 +34,13 @@
                 </div>
             </div>
             <div class="contentBody">
-                <div class="headName">
-                    <p class="ml-72 mt-8 text-2xl text-slate-600 font-bold uppercase font-poppins">List Account</p>
+                <div class="flex mt-8 ml-72">
+                    <div class="headName">
+                        <p class="text-2xl text-slate-600 font-bold uppercase font-poppins">Account List</p>
+                    </div>
+                    <div class="createButton">
+                        <a href="/admin/create-account" class="ml-[44em] bg-zinc-200 hover:bg-zinc-400 p-2.5 border border-gray-300 hover:border-zinc-400 rounded-lg font-poppins font-semibold  text-gray-700 duration-200">Create</a>
+                    </div>
                 </div>
                 <div class="tableAccount">
                     <div class="relative ml-72 mr-7 py-5 overflow-x-auto">
@@ -70,7 +74,14 @@
                                             {{ $acc->email }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            Nigga
+                                            <div class="icons flex gap-4">
+                                                <form action="/admin/delete-operator/{{ $acc['id'] }}" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                                                </form>
+                                                <a href=""><i class="fa-solid fa-pencil"></i></a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -90,4 +101,4 @@
         menuButton.addEventListener('click', () => {
             hidden.classList.toggle('hidden');
         });
-@endsection
+    @endsection

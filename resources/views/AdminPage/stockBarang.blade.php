@@ -35,8 +35,13 @@
                 </div>
             </div>
             <div class="contentBody">
-                <div class="headName">
-                    <p class="ml-72 mt-8 text-2xl text-slate-600 font-bold uppercase font-poppins">List Account</p>
+                <div class="flex mt-8 ml-72">
+                    <div class="headName">
+                        <p class="text-2xl text-slate-600 font-bold uppercase font-poppins">Item List</p>
+                    </div>
+                    <div class="createButton">
+                        <a href="/admin/create-barang" class="ml-[47em] bg-zinc-200 hover:bg-zinc-400 p-2.5 border border-gray-300 hover:border-zinc-400 rounded-lg font-poppins font-semibold  text-gray-700 duration-200">Add Item</a>
+                    </div>
                 </div>
                 <div class="tableAccount">
                     <div class="relative ml-72 mr-7 py-5 overflow-x-auto">
@@ -44,13 +49,13 @@
                             <thead class="text-xs text-gray-700 uppercase bg-zinc-200">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
-                                        Name
+                                        Item Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Username
+                                        Quantity
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Email
+                                        Price
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Action
@@ -58,16 +63,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($accountOperator as $acc)
+                                @foreach ($stockBarang as $barang)
                                     <tr class="bg-neutral-50 border-b">
                                         <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-                                            {{ $acc->name }}
+                                            {{ $barang->itemName }}
                                         </th>
                                         <td class="px-6 py-4">
-                                            {{ $acc->username }}
+                                            {{ $barang->quantity }} 
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $acc->email }}
+                                            Rp. {{ number_format($barang->price, '0', ',' , '.') }}
                                         </td>
                                         <td class="px-6 py-4">
                                             Nigga
@@ -76,9 +81,9 @@
                                 @endforeach 
                             </tbody>
                         </table>
-                        <div class="mt-2 itemLinks">
-                            {{ $accountOperator->links() }}
-                        </div>
+                        {{-- <div class="mt-2 itemLinks">
+                            {{ $stockBarang->links() }}
+                        </div> --}}
                     </div>
                 </div>
             </div>
